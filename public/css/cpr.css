@@ -1,0 +1,181 @@
+body{
+    font-family: arial;
+    margin: 0;
+     
+
+background-color: #263238;
+/*
+background: linear-gradient(to left, #C2D3CA, #81A3A7, #585A56); 
+
+background: url('../images/wp1.gif');
+
+background: linear-gradient(to left ,white,whitesmoke,#F1F3F2);
+*/
+
+}
+
+
+
+
+
+
+/* Custom page header */
+.header {
+  
+    padding-top: 30px;
+  }
+  /* Make the masthead heading the same height as the navigation */
+  
+
+  /* Custom page footer */
+  .footer {
+    padding-top: 19px;
+    color: #777;
+    border-top: 1px solid #e5e5e5;
+  }
+  
+  
+  .nav-wrapper{
+      width: 100%;
+      background-color: white; 
+    
+  }
+
+  .ctext  li a{
+ 
+/*        color: #26a69a;
+   */
+   color:#ffff00;  
+  }
+ 
+  nav ul li:hover {
+  
+    text-decoration-line: none;
+
+ }
+ 
+  
+  brand-logo{
+      padding-left: 50px;
+      color: #585A56;
+  }
+
+ 
+ 
+  
+  
+  .mysuccess{
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+  }
+  
+  .myerror{
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+  }
+
+.text-header{
+    font-weight: bold;
+   /* color: whitesmoke;*/
+   color: #ffff00;
+}
+.card-content{
+    background-color:#FBFCFC  ;
+}
+
+
+.btnlarge{
+    width: 100%;
+}
+
+
+     /* label color */
+     .input-field label {
+        color: #68b9db;
+        font: bolder;
+        font-size: 20px;
+      }
+      /* label focus color */
+      .input-field input[type=text]:focus + label {
+        color: #0392cf;
+        font-size: 20px;
+        
+      }
+      /* label underline focus color */
+      .input-field input[type=text]:focus {
+        border-bottom: 1px solid #fff;
+        box-shadow: 0 1px 0 0 #fff;
+        font-size: 20px;
+      }
+      /* valid color */
+      .input-field input[type=text].valid {
+        border-bottom: 1px solid #0392cf;
+        box-shadow: 0 1px 0 0 #0392cf;
+        font-size: 20px;
+      }
+      /* invalid color */
+      .input-field input[type=text].invalid {
+        border-bottom: 1px solid #0392cf;
+        box-shadow: 0 1px 0 0 #0392cf;
+        font-size: 20px;
+      }
+      /* icon prefix focus color */
+      .input-field .prefix.active {
+        color: #009688;
+        font-size: 20px;
+      }
+
+
+
+  .prefix{
+    color: #ffff00;
+    
+  }
+
+  .prefix2{
+    color: #ffff00;
+  }
+
+  #toast-container {
+    top: important;
+    right: auto !important;
+    bottom: 10%;
+    left:35%;
+  
+  }
+
+  .card-color{
+    color: #00ced1;
+  }
+
+
+  .collapsible{
+    color: #009688;
+    text-align: center;
+  }
+
+
+  .collapsible-header{
+    color: white;
+   
+  }
+
+
+  table, th, td {
+    border: 3px solid #ffff00;
+  }
+
+  .ship{
+      background-color:#00796b ;
+  }
+
+.cosg{
+    background-color: #00838f;
+}
+
+.btr{
+    background-color: #546e7a;
+}
+  .modal { width: 100% !important ; height: 75% !important ; }

@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+    <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+            <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>CourierCostReduction</title>
+        
+    <!-- Bootstrap -->
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/rpr.css" rel="stylesheet">
+    <link href="/css/jumbotron-narrow.css" rel="stylesheet">
+    
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    ​ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <!-- 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+
+    -->
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Custom styles for this template 
+
+   <link href="/css/jumbotron-narrow.css" rel="stylesheet">-->
+
+   <!-- 
+table links starts here
+   -->
+
+
+             
+  
+  
+</head>
+<body>
+          
+      
+                  
+                  <div class="container-fluid fixed-top "  style="background-color: #37474f;">
+                  <nav class="navbar navbar-toggleable-md navbar-light bg-faded navbar-dark" style="background-color: #37474f;" >
+                    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbrText" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon">
+                        
+                      </span>
+                    </button>
+                    <a class="navbar-brand" href=""><h1>CourierCostReduction</h1></a>
+                    <div class="collapse navbar-collapse" id="navbarText">
+                      <ul class="navbar-nav mr-auto">
+                       
+                        <li class="nav-item">
+                          <a class="nav-link" href="/auth/logout"><h5>LogOut</h5></a>
+                        </li>
+                      </ul>
+                    </div>
+                  </nav>
+                  </div>
+                  <!-- Fixed Top Menu div ends here -->
+             
+                 
+            
+
+
+
+
+
+<div class="pbody">
+<div class="container">
+
+  <div class="row">
+            
+               <h3>Showing All Requests</h3>     
+
+        <% countries.forEach(function(countries) { %>
+           
+                 <div class="card">
+                           <div class="card-header">
+                                <h4>Country Name: <%=countries %> </h4>
+                                <form action="/requests/SetCourrierName" method="POST">
+                                  <input type="hidden" name="countryNamee" value=<%=countries %> >
+                                    <div class="form-row">
+                                        <div class="form-group col-md-9">
+                                          
+                                          <input type="text" class="form-control" name="CourrierComName" placeholder="Courrier Company Name">
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </div>
+                                    
+                                      </div>
+                                  </form>    
+                                  
+                                  <form  action="/requests/DownloadExcell" method="POST">
+                                    <input type="hidden"  name="ConnName" value=<%=countries %> >
+                                      <div class="form-group">
+                                          
+                                          
+                                        <button type="submit" class="btn btn-info btn-lg btn-block">
+                                            <i class="fa fa-download fa-fw" aria-hidden="true"></i>Download excell sheet for this country
+                                        
+                                          </button>
+                                        
+                                        </div>
+                                  </form>
+                            </div>
+
+
+                          <div class="card-body">
+
+                            
+                                      <h5>Inbounds Requests</h5>
+                                                 
+                          
+                                        ​​​​​​​​​​​​​<div class="table-responsive">          
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                      <th>Request By</th>
+                                                      <th>View Detail</th>
+                                                      <th>Company Name</th>
+                                                      <th>Request Date</th>
+                                                      
+                                                       
+                                                    </tr>
+                                                  </thead>
+                                                  <tbody>
+                                                      <% requests.forEach(function(requests) { %>
+                                                             <% if (requests.shiperOrshippingTo[0].country1==countries && requests.reqtype=="INBOUND") { %>
+                                                                    <tr>
+                                                                       <td><%=requests.usermail%></td>
+                                                                             <td>
+                                                                                <div class="btn-group dropleft">
+                                                                                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-search"></i></button>
+                                                                                           <div class="dropdown-menu showingmenu">
+                                                                                                <div class="card">
+                                                                                                  
+                                                                                                        <div class="card-body">
+                                                                                                      
+                                                                                                              <table class="table table-striped table-responsive">
+                                                                                                                      <thead>
+                                                                                                                        <tr>
+                                                                                                                          <th> </th>
+                                                                                                                          <th>Shipping From</th>
+                                                                                                                          <th>Cosignee</th>
+                                                                                                                        </tr>
+                                                                                                                      </thead>
+                                                                                                                      <tbody>
+                                                                                                                        <tr>
+                                                                                                                          <th>Contact Person</th>
+                                                                                                                          <td><%= requests.shiperOrshippingTo[0].cpname1 %></td>
+                                                                                                                          <td><%= requests.conignee[0].cpname2 %></td>
+                                                                                                                        </tr>
+                                                                                                                        <tr>
+                                                                                                                          <th>Contact Person Number</th>
+                                                                                                                          <td><%= requests.shiperOrshippingTo[0].cpnum1 %></td>
+                                                                                                                          <td><%= requests.conignee[0].cpnum2 %></td>
+                                                                                                                        </tr>
+                                                                                                                        <tr>
+                                                                                                                          <th>Company Name</th>
+                                                                                                                          <td><%= requests.shiperOrshippingTo[0].comname1 %></td>
+                                                                                                                          <td><%= requests.conignee[0].comname2 %></td>
+                                                                                                                        </tr>
+                                                                                                                        <tr>
+                                                                                                                          <th>Company Address</th>
+                                                                                                                          <td><%= requests.shiperOrshippingTo[0].comadd1 %></td>
+                                                                                                                          <td><%= requests.conignee[0].comadd2 %></td>
+                                                                                                                        </tr>
+                                                                                                                        <tr>
+                                                                                                                          <th>City</th>
+                                                                                                                          <td><%= requests.shiperOrshippingTo[0].city1 %></td>
+                                                                                                                          <td><%= requests.conignee[0].city2 %></td>
+                                                                                                                        </tr>
+                                                                                                                        <tr>
+                                                                                                                          <th>Country</th>
+                                                                                                                          <td><%= requests.shiperOrshippingTo[0].country1 %></td>
+                                                                                                                          <td><%= requests.conignee[0].country2 %></td>
+                                                                                                                        </tr>
+                                                                                                                      </tbody>
+                                                                                                                    </table>
+                                                                                                                    
+                                                                                                              
+                                                                                                        </div>
+                                                                                                      </div> 
+                                                                                                                   
+                                                                                           </div>
+                                                                                </div>
+                                                                                </td>
+                                 
+                                                                                <td><%=requests.comname%></td>
+                                                                               <td><%=requests.reqDate%></td>
+                                                                               
+                                                                                      
+                                                                                     </tr>
+                                                                                     <% } %> 
+                                     
+                                                                <% }); %>
+                                                                                   </tbody>
+                                            </table>
+                                            </div> 
+                                     
+
+
+                                            <h5>Outbound Requests</h5>
+                                                 
+                          
+                                            ​​​​​​​​​​​​​<div class="table-responsive">          
+                                                <table class="table">
+                                                  <thead>
+                                                    <tr>
+                                                      <th>Request By</th>
+                                                      <th>View Detail</th>
+                                                      <th>Company Name</th>
+                                                      
+                                                      <th>Request Date</th>
+                                                
+                                                      
+                                                     
+                                                      
+                                                    </tr>
+                                                  </thead>
+                                                  <tbody>
+                     <% requests.forEach(function(requests) { %>
+                            <% if (requests.shiperOrshippingTo[0].country1==countries && requests.reqtype=="OUTBOUND") { %>
+                                                    <tr>
+                                                      <td><%=requests.usermail%></td>
+                                                      
+                                                     
+                                                <td>
+                                                       <!-- Example single danger button -->
+                                                       <div class="btn-group dropleft">
+                                                          <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-search"></i></button>
+                                                          
+                                                                    <div class="dropdown-menu showingmenu">
+                                                                        
+                                                                                      
+                                                                                            
+                                                                                              <div class="card">
+                                                                                                  
+                                                                                                      <div class="card-body">
+                                                                                                    
+                                                                                                            <table class="table table-striped table-responsive">
+                                                                                                                    <thead>
+                                                                                                                      <tr>
+                                                                                                                        <th> </th>
+                                                                                                                        <th>Shipper</th>
+                                                                                                                        <th>Cosignee</th>
+                                                                                                                      </tr>
+                                                                                                                    </thead>
+                                                                                                                    <tbody>
+                                                                                                                      <tr>
+                                                                                                                        <th>Contact Person</th>
+                                                                                                                        <td><%= requests.shiperOrshippingTo[0].cpname1 %></td>
+                                                                                                                        <td><%= requests.conignee[0].cpname2 %></td>
+                                                                                                                      </tr>
+                                                                                                                      <tr>
+                                                                                                                        <th>Contact Person Number</th>
+                                                                                                                        <td><%= requests.shiperOrshippingTo[0].cpnum1 %></td>
+                                                                                                                        <td><%= requests.conignee[0].cpnum2 %></td>
+                                                                                                                      </tr>
+                                                                                                                      <tr>
+                                                                                                                        <th>Company Name</th>
+                                                                                                                        <td><%= requests.shiperOrshippingTo[0].comname1 %></td>
+                                                                                                                        <td><%= requests.conignee[0].comname2 %></td>
+                                                                                                                      </tr>
+                                                                                                                      <tr>
+                                                                                                                        <th>Company Address</th>
+                                                                                                                        <td><%= requests.shiperOrshippingTo[0].comadd1 %></td>
+                                                                                                                        <td><%= requests.conignee[0].comadd2 %></td>
+                                                                                                                      </tr>
+                                                                                                                      <tr>
+                                                                                                                        <th>City</th>
+                                                                                                                        <td><%= requests.shiperOrshippingTo[0].city1 %></td>
+                                                                                                                        <td><%= requests.conignee[0].city2 %></td>
+                                                                                                                      </tr>
+                                                                                                                      <tr>
+                                                                                                                        <th>Country</th>
+                                                                                                                        <td><%= requests.shiperOrshippingTo[0].country1 %></td>
+                                                                                                                        <td><%= requests.conignee[0].country2 %></td>
+                                                                                                                      </tr>
+                                                                                                                    </tbody>
+                                                                                                                  </table>
+                                                                                                                  
+                                                                                                            
+                                                                                                      </div>
+                                                                                                    </div>
+                                                                                     
+                                                                                      
+                                                                                      
+                                                                                  
+                                                                                  </div>
+                                                                                
+                                                                      </div>
+                                                                </div>
+                                               </td>
+
+                                               <td><%=requests.comname%></td>
+                                              <td><%=requests.reqDate%></td>
+                                              
+                                                      
+                                      
+                                             
+                                                    </tr>
+
+                                                   
+                                                    <% } %> 
+    
+                               <% }); %>
+                                                  </tbody>
+                                                </table>
+                                                </div> 
+                                                
+        
+
+
+
+
+
+                                              
+                          </div>
+
+              </div>
+
+
+
+<% }); %>                        
+                                  
+                                  
+                                 
+  </div>
+                     
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div id="accordion">
+  
+    <div class="card">
+        <div class="card-header" id="headingTwo">
+          <h5 class="mb-0">
+            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              <h2>INBOUND</h2>
+            </button>
+          </h5>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+          <div class="card-body">
+            <h3>vgjhfgjh</h3>
+          </div>
+        </div>
+      </div>
+
+
+    
+
+
+
+
+    <div class="card">
+        <div class="card-header" id="headingTwoo">
+          <h5 class="mb-0">
+            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwoo" aria-expanded="false" aria-controls="collapseTwoo">
+              <h2>Collapsible Group Item #2</h2>
+            </button>
+          </h5>
+        </div>
+        <div id="collapseTwoo" class="collapse" aria-labelledby="headingTwoo" data-parent="#accordion">
+          <div class="card-body">
+            <h3>vgjhfgjh</h3>
+          </div>
+        </div>
+      </div>
+  </div>
+
+
+
+        
+</body>
+  
+</html>

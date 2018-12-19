@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html>
+    <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+            <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>CourrierCostReduction</title>
+        <style>
+            
+        </style>
+        
+    <!-- Bootstrap 
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    -->
+    <!-- Custom styles for this template 
+   <link href="/css/jumbotron-narrow.css" rel="stylesheet">-->
+  
+
+   <link href="/css/profiler.css" rel="stylesheet">
+
+
+   <!--Materialize starts here-->
+
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css"  media="screen,projection"/>
+      
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+<!--Materialize ends here-->
+
+ <!--Import jQuery before materialize.js-->
+ <script type="text/javascript" src="/materialize/jque.min.js"></script>
+ <script type="text/javascript" src="/materialize/js/materialize.min.js"></script>
+ 
+
+
+
+
+    </head>
+    <body>
+          
+      
+            <!-- Dropdown Structure -->
+<ul id="dropdown1" class="dropdown-content blue-grey darken-3"style="color:#E0A905">
+    <li><a href="/auth/logout"><i class="material-icons">exit_to_app</i>Logout</a></li>
+    <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
+    <li><a href="#!">two</a></li>
+    <li class="divider"></li>
+    <li><a href="#!">three</a></li>
+  </ul>
+   
+      
+
+        <div class="container-fluid fixed-top " style="background-color: #2d333a;">
+           
+
+  
+  <nav>
+
+
+      <div class="nav-wrapper blue-grey darken-3">
+      
+        <a href="#!" class="brand-logo"style="padding-left:60px; color:white;"><i class="material-icons prefix"style="color:white;">all_inbox</i>Courrier Cost Reduction</a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+          
+                  <!-- Dropdown Trigger -->
+                  <li><a class="dropdown-button" style="color:#E0A905;font:bolder;" href="#!" data-activates="dropdown1"><i class="material-icons right">arrow_drop_down</i>Menu</a></li>
+         
+    
+
+        </ul>
+
+        <ul class="side-nav" id="mobile-demo">
+          
+            <li><a href="/auth/logout"><i class="material-icons">exit_to_app</i>Logout</a></li>
+         
+        </ul>
+      </div>
+    </nav>
+
+            </div>
+            <!-- Fixed Top Menu div ends here -->
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+            <div class="row btag">
+                
+
+                <div class="col s0 m4 l1"></div>
+                <div class="col s12 m4 l10">
+                                <div class="header">
+                                    
+                                    <h4 class="text-header">Welcome <%= user.username %></h4>
+                                  </div>
+    
+                                  <% if(mesg.error_msg) { %>
+                    
+                                       <script>
+                                    Materialize.toast('<%= mesg.error_msg %>', 4000,'red accent-3');
+                                    </script>
+                                 <% }%>
+
+
+                                 <% if(mesg.insert_msg) { %>
+                    
+                                  <script>
+                                      Materialize.toast('<%= mesg.insert_msg %>', 4000,'teal accent-3');
+                                      </script>
+                
+                                     
+                                <% }%>
+                                
+                                <% if(mesg.cant_insert_msg) { %>
+                                
+                                
+                                  <script>
+                                      Materialize.toast('mesg.cant_insert_msg', 4000,'red accent-3');
+                                      </script>
+                                    
+                                <% }%>
+                                 
+                                              
+
+
+                                <ul class="collapsible popout" data-collapsible="accordion">
+                                    <li>
+                                
+                                      <div class="collapsible-header blue-grey darken-3"> <h4 style="padding-left:300px;">
+                                        <i class="large material-icons">arrow_downward</i> </h4>
+                                        <h4> InBound Request Form </h4>
+                                      </div>
+                                      <div class="collapsible-body blue-grey darken-3">
+                                
+                                          <div class="row">
+                                              <div class="col s12 m12">
+                                                <div class="card card-color">
+                                                  <div class="card-content teal-text">
+                                                    
+                                                      <div class="row">
+                                                      <form action="/profile/addreq" method="POST">
+                                                          <div class="col s4">
+                                                            <h5>Order Information</h5>
+                                                            <input type="hidden"  name="reqType" value="INBOUND">
+                                                                    <div class="row">
+                                                                    <div class="input-field">
+                                                                      <i class="material-icons prefix">supervised_user_circle</i>
+                                                                      <input id="icon_prefix" type="text" class="validate" name="buyer">
+                                                                      <label for="icon_prefix">Buyer</label>
+                                                                    </div>
+                                                                    </div>
+                                
+                                                                    <div class="row">
+                                                                    <div class="input-field">
+                                                                      <i class="material-icons prefix">how_to_vote</i>
+                                                                      <input id="icon_telephone" type="text" class="validate" name="orderNumber">
+                                                                      <label for="icon_telephone">Order Number</label>
+                                                                    </div>
+                                                                    </div>
+                                
+                                                                    <div class="row">
+                                                                        <div class="input-field">
+                                                                          <i class="material-icons prefix">ballot</i>
+                                                                          <input id="icon_telephone" type="text" class="validate" name="style">
+                                                                          <label for="icon_telephone">Style</label>
+                                                                    </div>
+                                                                    </div>
+                                
+                                                                    <div class="row">
+                                                                    <div class="input-field">
+                                                                          <i class="material-icons prefix">insert_invitation</i>
+                                                                          <input id="icon_telephone" type="text" class="validate" name="estemWeight">
+                                                                          <label for="icon_telephone">Estimated Weight</label>
+                                                                    </div>
+                                                                    </div>
+                                                             
+                                
+                                                                    <div class="row">
+                                                                    <div class="input-field">
+                                                                              <i class="material-icons prefix">font_download</i>
+                                                                              <input id="icon_telephone" type="text" class="validate" name="article">
+                                                                              <label for="icon_telephone">Article</label>
+                                                                    </div>
+                                                                    </div>
+                                
+                                
+                                                                    <div class="row">
+                                                                        <div class="input-field">
+                                                                              <i class="material-icons prefix">domain</i>
+                                                                              <input id="icon_telephone" type="text" class="validate" name="item">
+                                                                              <label for="icon_telephone">Item</label>
+                                                                    </div>
+                                                                    </div>
+                                
+                                                            </div>
+                                
+                                                            <div class="col s4">
+                                                                <h5>Shipping To</h5>
+                                    
+                                                                        <div class="row">
+                                                                        <div class="input-field">
+                                                                          <i class="material-icons prefix">person</i>
+                                                                          <input id="icon_prefix" type="text" class="validate" name="cpname1">
+                                                                          <label for="icon_prefix">Contact Person</label>
+                                                                        </div>
+                                                                        </div>
+                                    
+                                                                        <div class="row">
+                                                                        <div class="input-field">
+                                                                          <i class="material-icons prefix">contact_phone</i>
+                                                                          <input id="icon_telephone" type="text" class="validate" name="cpnum1">
+                                                                          <label for="icon_telephone">Contact Number</label>
+                                                                        </div>
+                                                                        </div>
+                                    
+                                                                        <div class="row">
+                                                                            <div class="input-field">
+                                                                              <i class="material-icons prefix">business</i>
+                                                                              <input id="icon_telephone" type="text" class="validate" name="comname1">
+                                                                              <label for="icon_telephone">Company Name</label>
+                                                                        </div>
+                                                                        </div>
+                                    
+                                                                        <div class="row">
+                                                                        <div class="input-field">
+                                                                              <i class="material-icons prefix">account_balance</i>
+                                                                              <input id="icon_telephone" type="text" class="validate" name="comadd1">
+                                                                              <label for="icon_telephone">Company Address</label>
+                                                                        </div>
+                                                                        </div>
+                                                                 
+                                    
+                                                                        <div class="row">
+                                                                        <div class="input-field">
+                                                                                  <i class="material-icons prefix">location_city</i>
+                                                                                  <input id="icon_telephone" type="text" class="validate" name="city1">
+                                                                                  <label for="icon_telephone">City</label>
+                                                                        </div>
+                                                                        </div>
+                                    
+                                                                    
+                                                                        
+                                
+                                
+                                
+                                                                          <div class="row">
+                                                                           <div class="input-field">
+                                                                                    <i class="material-icons prefix">location_on</i>
+                                                                                    <input id="icon_prefix" type="text" class="validate" list="datalist1" name="country1">
+                                                                                    <label for="icon_prefix">Country</label>
+                                                                                    <datalist id="datalist1">
+                                                                                  
+                                                                                                  <% countriess.forEach(function(countriess) { %>
+                                                                                                    <option value="<%= countriess.countryname %>" >
+                                                                                                    <% }); %>
+                                                                                    </datalist>
+                                                                                          
+                                                                          </div>
+                                                                          </div>
+                                                                       
+                                
+                                
+                                                                              
+                                                                            
+                                                                            
+                                                                                  
+                                    
+                                                                </div>
+                                                                <div class="col s4">
+                                                                    <h5>Cosignee</h5>
+                                        
+                                                                            <div class="row">
+                                                                            <div class="input-field">
+                                                                              <i class="material-icons prefix">person</i>
+                                                                              <input id="icon_prefix" type="text" class="validate" name="cpname2">
+                                                                              <label for="icon_prefix">Contact Person</label>
+                                                                            </div>
+                                                                            </div>
+                                        
+                                                                            <div class="row">
+                                                                            <div class="input-field">
+                                                                              <i class="material-icons prefix">contact_phone</i>
+                                                                              <input id="icon_telephone" type="text" class="validate" name="cpnum2">
+                                                                              <label for="icon_telephone">Contact Number</label>
+                                                                            </div>
+                                                                            </div>
+                                        
+                                                                            <div class="row">
+                                                                                <div class="input-field">
+                                                                                  <i class="material-icons prefix">business</i>
+                                                                                  <input id="icon_telephone" type="text" class="validate" name="comname2">
+                                                                                  <label for="icon_telephone">Company Name</label>
+                                                                            </div>
+                                                                            </div>
+                                        
+                                                                            <div class="row">
+                                                                            <div class="input-field">
+                                                                                  <i class="material-icons prefix">account_balance</i>
+                                                                                  <input id="icon_telephone" type="text" class="validate" name="comadd2">
+                                                                                  <label for="icon_telephone">Company Address</label>
+                                                                            </div>
+                                                                            </div>
+                                                                     
+                                        
+                                                                            <div class="row">
+                                                                            <div class="input-field">
+                                                                                      <i class="material-icons prefix">location_city</i>
+                                                                                      <input id="icon_telephone" type="text" class="validate" name="city2">
+                                                                                      <label for="icon_telephone">City</label>
+                                                                            </div>
+                                                                            </div>
+
+                                                                            <div class="row">
+                                                                                <div class="input-field">
+                                                                                         <i class="material-icons prefix">location_on</i>
+                                                                                         <input id="icon_prefix" type="text" class="validate" list="datalist1" name="country2">
+                                                                                         <label for="icon_prefix">Country</label>
+                                                                                         <datalist id="datalist1">
+                                                                                       
+                                                                                                       <% countriess.forEach(function(countriess) { %>
+                                                                                                         <option value="<%= countriess.countryname %>" >
+                                                                                                         <% }); %>
+                                                                                         </datalist>
+                                                                                               
+                                                                               </div>
+                                                                               </div>
+                                        
+                                        
+                                                                            
+                                                                           
+                                                                            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                                                                                <i class="material-icons right">send</i>
+                                                                              </button>     
+                                                                    </div>
+                                                                    
+                                                          </form>
+                                
+                                
+                                                        </div>
+                                
+                                                  </div>
+                                                
+                                                </div>
+                                              </div>
+                                            </div>
+                                      </div>
+                                    </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    <li>
+                                
+                                      <div class="collapsible-header blue-grey darken-3"> <h4 style="padding-left: 300px;">
+                                  
+                                        <i class="large material-icons">arrow_upward</i> </h4>
+                                        <h4>  OutBound Request Form </h4>
+                                      </div>
+                                      <div class="collapsible-body blue-grey darken-3">
+                                
+                                          <div class="row">
+                                              <div class="col s12 m12">
+                                                <div class="card card-color">
+                                                  <div class="card-content teal-text">
+                                                    
+                                                      <div class="row">
+                                                      <form action="/profile/addreq" method="POST">
+                                                          <div class="col s4">
+                                                            <h5>Order Information</h5>
+                                                            <input type="hidden"  name="reqType" value="OUTBOUND">
+                                                                    <div class="row">
+                                                                    <div class="input-field">
+                                                                      <i class="material-icons prefix">supervised_user_circle</i>
+                                                                      <input id="icon_prefix" type="text" class="validate" name="buyer">
+                                                                      <label for="icon_prefix">Buyer</label>
+                                                                    </div>
+                                                                    </div>
+                                
+                                                                    <div class="row">
+                                                                    <div class="input-field">
+                                                                      <i class="material-icons prefix">how_to_vote</i>
+                                                                      <input id="icon_telephone" type="text" class="validate" name="orderNumber">
+                                                                      <label for="icon_telephone">Order Number</label>
+                                                                    </div>
+                                                                    </div>
+                                
+                                                                    <div class="row">
+                                                                        <div class="input-field">
+                                                                          <i class="material-icons prefix">ballot</i>
+                                                                          <input id="icon_telephone" type="text" class="validate" name="style">
+                                                                          <label for="icon_telephone">Style</label>
+                                                                    </div>
+                                                                    </div>
+                                
+                                                                    <div class="row">
+                                                                    <div class="input-field">
+                                                                          <i class="material-icons prefix">insert_invitation</i>
+                                                                          <input id="icon_telephone" type="text" class="validate" name="estemWeight">
+                                                                          <label for="icon_telephone">Estimated Weight</label>
+                                                                    </div>
+                                                                    </div>
+                                                             
+                                
+                                                                    <div class="row">
+                                                                    <div class="input-field">
+                                                                              <i class="material-icons prefix">font_download</i>
+                                                                              <input id="icon_telephone" type="text" class="validate" name="article">
+                                                                              <label for="icon_telephone">Article</label>
+                                                                    </div>
+                                                                    </div>
+                                
+                                
+                                                                    <div class="row">
+                                                                        <div class="input-field">
+                                                                              <i class="material-icons prefix">domain</i>
+                                                                              <input id="icon_telephone" type="text" class="validate" name="item">
+                                                                              <label for="icon_telephone">Item</label>
+                                                                    </div>
+                                                                    </div>
+                                
+                                                            </div>
+                                
+                                                            <div class="col s4">
+                                                                <h5>Shipping To</h5>
+                                    
+                                                                        <div class="row">
+                                                                        <div class="input-field">
+                                                                          <i class="material-icons prefix">person</i>
+                                                                          <input id="icon_prefix" type="text" class="validate" name="cpname1">
+                                                                          <label for="icon_prefix">Contact Person</label>
+                                                                        </div>
+                                                                        </div>
+                                    
+                                                                        <div class="row">
+                                                                        <div class="input-field">
+                                                                          <i class="material-icons prefix">contact_phone</i>
+                                                                          <input id="icon_telephone" type="text" class="validate" name="cpnum1">
+                                                                          <label for="icon_telephone">Contact Number</label>
+                                                                        </div>
+                                                                        </div>
+                                    
+                                                                        <div class="row">
+                                                                            <div class="input-field">
+                                                                              <i class="material-icons prefix">business</i>
+                                                                              <input id="icon_telephone" type="text" class="validate" name="comname1">
+                                                                              <label for="icon_telephone">Company Name</label>
+                                                                        </div>
+                                                                        </div>
+                                    
+                                                                        <div class="row">
+                                                                        <div class="input-field">
+                                                                              <i class="material-icons prefix">account_balance</i>
+                                                                              <input id="icon_telephone" type="text" class="validate" name="comadd1">
+                                                                              <label for="icon_telephone">Company Address</label>
+                                                                        </div>
+                                                                        </div>
+                                                                 
+                                    
+                                                                        <div class="row">
+                                                                        <div class="input-field">
+                                                                                  <i class="material-icons prefix">location_city</i>
+                                                                                  <input id="icon_telephone" type="text" class="validate" name="city1">
+                                                                                  <label for="icon_telephone">City</label>
+                                                                        </div>
+                                                                        </div>
+                                    
+                                                                    
+                                                                        
+                                
+                                
+                                
+                                                                          <div class="row">
+                                                                           <div class="input-field">
+                                                                                    <i class="material-icons prefix">location_on</i>
+                                                                                    <input id="icon_prefix" type="text" class="validate" list="datalist1" name="country1">
+                                                                                    <label for="icon_prefix">Country</label>
+                                                                                    <datalist id="datalist1">
+                                                                                  
+                                                                                                  <% countriess.forEach(function(countriess) { %>
+                                                                                                    <option value="<%= countriess.countryname %>" >
+                                                                                                    <% }); %>
+                                                                                    </datalist>
+                                                                                          
+                                                                          </div>
+                                                                          </div>
+                                                                       
+                                
+                                
+                                                                              
+                                                                            
+                                                                            
+                                                                                  
+                                    
+                                                                </div>
+                                                                <div class="col s4">
+                                                                    <h5>Cosignee</h5>
+                                        
+                                                                            <div class="row">
+                                                                            <div class="input-field">
+                                                                              <i class="material-icons prefix">person</i>
+                                                                              <input id="icon_prefix" type="text" class="validate" name="cpname2">
+                                                                              <label for="icon_prefix">Contact Person</label>
+                                                                            </div>
+                                                                            </div>
+                                        
+                                                                            <div class="row">
+                                                                            <div class="input-field">
+                                                                              <i class="material-icons prefix">contact_phone</i>
+                                                                              <input id="icon_telephone" type="text" class="validate" name="cpnum2">
+                                                                              <label for="icon_telephone">Contact Number</label>
+                                                                            </div>
+                                                                            </div>
+                                        
+                                                                            <div class="row">
+                                                                                <div class="input-field">
+                                                                                  <i class="material-icons prefix">business</i>
+                                                                                  <input id="icon_telephone" type="text" class="validate" name="comname2">
+                                                                                  <label for="icon_telephone">Company Name</label>
+                                                                            </div>
+                                                                            </div>
+                                        
+                                                                            <div class="row">
+                                                                            <div class="input-field">
+                                                                                  <i class="material-icons prefix">account_balance</i>
+                                                                                  <input id="icon_telephone" type="text" class="validate" name="comadd2">
+                                                                                  <label for="icon_telephone">Company Address</label>
+                                                                            </div>
+                                                                            </div>
+                                                                     
+                                        
+                                                                            <div class="row">
+                                                                            <div class="input-field">
+                                                                                      <i class="material-icons prefix">location_city</i>
+                                                                                      <input id="icon_telephone" type="text" class="validate" name="city2">
+                                                                                      <label for="icon_telephone">City</label>
+                                                                            </div>
+                                                                            </div>
+
+                                                                            <div class="row">
+                                                                                <div class="input-field">
+                                                                                         <i class="material-icons prefix">location_on</i>
+                                                                                         <input id="icon_prefix" type="text" class="validate" list="datalist1" name="country2">
+                                                                                         <label for="icon_prefix">Country</label>
+                                                                                         <datalist id="datalist1">
+                                                                                       
+                                                                                                       <% countriess.forEach(function(countriess) { %>
+                                                                                                         <option value="<%= countriess.countryname %>" >
+                                                                                                         <% }); %>
+                                                                                         </datalist>
+                                                                                               
+                                                                               </div>
+                                                                               </div>
+                                        
+                                        
+                                                                            
+                                                                           
+                                                                            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                                                                                <i class="material-icons right">send</i>
+                                                                              </button>     
+                                                                    </div>
+                                                                    
+                                                          </form>
+                                
+                                
+                                                        </div>
+                                
+                                                  </div>
+                                                
+                                                </div>
+                                              </div>
+                                            </div>
+                                      </div>
+                                    </li>
+                                  </ul>
+                  
+                   
+          
+          
+               
+               </div>
+               <div class="col s0 m4 l1"></div>
+              </div>
+
+
+
+
+
+
+
+
+
+<script>
+
+  
+$(document).ready(function(){
+  $(".button-collapse").sideNav();
+  $(".dropdown-button").dropdown({ hover: true});
+        
+});
+  </script>
+
+
+
+                  
+
+        
+    </body>
+</html>

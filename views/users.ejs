@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+    <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+            <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>CourrierCostReduction</title>
+        <style>
+            
+        </style>
+        
+    <!-- Bootstrap -->
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/user.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Custom styles for this template 
+   <link href="/css/jumbotron-narrow.css" rel="stylesheet">-->
+  
+    </head>
+    <body>
+          
+                  
+                  
+                  <div class="container-fluid fixed-top " style="background-color: white;">
+                  <nav class="navbar navbar-toggleable-md navbar-light bg-faded" >
+                    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbrText" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <a class="navbar-brand" href=""><h1>CourrierCostReduction</h1></a>
+                    <div class="collapse navbar-collapse" id="navbarText">
+                      <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                          <a class="nav-link" href="#PerInfo"><h5>InBound</h5><span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#Education"><h5>OutBound</h5></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="/authorize/signout"><h5>LogOut</h5></a>
+                        </li>
+                      </ul>
+                    </div>
+                  </nav>
+                  </div>
+                  <!-- Fixed Top Menu div ends here -->
+                 
+                 <br><br><br>
+                 
+            <div class="jumbotron" id="Contact" >
+<h2>Welcome <%= user %></h2>
+
+                    <div class="container">
+           <form action="/users/addreq" method="POST">
+             
+                            <div class="row">
+                                    <div class="col-12">
+                                          <div class="card">
+                                                  <div class="card-header">
+                                                    Request Form
+                                                  </div>
+                                                  <div class="card-body">
+                                                    <h5 class="card-title">Special title treatment</h5>
+                                                    
+                                                            <div class="form-row">
+                                                              <div class="form-group col-md-4">
+                                                                <label for="buyer">Buyer</label>
+                                                                <input type="text" class="form-control" id="buyer" placeholder="Buyer">
+                                                              </div>
+                                                              <div class="form-group col-md-4">
+                                                                <label for="orderNumber">Order Number</label>
+                                                                <input type="text" class="form-control" id="orderNumber" placeholder="Order Number">
+                                                              </div>
+                                                              <div class="form-group col-md-4">
+                                                                    <label for="style">Style</label>
+                                                                    <input type="text" class="form-control" id="style" placeholder="Style">
+                                                              </div>
+                                                            </div>
+                                                            
+                                                           
+                                                            <div class="form-row">
+                                                                    <div class="form-group col-md-4">
+                                                                      <label for="estemWeight">Estimated Weight</label>
+                                                                      <input type="text" class="form-control" id="estemWeight" placeholder="Estimated Weight">
+                                                                    </div>
+                                                                    <div class="form-group col-md-4">
+                                                                      <label for="article">Article</label>
+                                                                      <input type="text" class="form-control" id="article" placeholder="Article">
+                                                                    </div>
+                                                                    <div class="form-group col-md-4">
+                                                                            <label for="item">Item</label>
+                                                                            <input type="text" class="form-control" id="item" placeholder="Item">
+                                                                          </div>
+                                                            </div>
+
+                                                          
+                                                  </div>
+                                                </div>
+                                    </div>
+                                    
+                                   
+                               </div>
+
+
+
+
+
+
+
+
+                        <div class="row">
+                              <div class="col-md-12 col-xs-12 col-sm-12 col-lg-6">
+                                  
+                                    <div class="card">
+                                            <div class="card-header">
+                                              Shipper
+                                            </div>
+                                            <div class="card-body">
+                                          
+                                                     <div class="form-group">
+                                                            <label for="cpname1">Contact Person</label>
+                                                            <input type="text" class="form-control" id="cpname1" placeholder="Contact Person">
+                                                          </div>
+                                                          <div class="form-group">
+                                                                <label for="cpnum1">Contact Number</label>
+                                                                <input type="text" class="form-control" id="cpnum1" placeholder="Contact Number">
+                                                              </div>
+                                                          <div class="form-group">
+                                                                <label for="comname1">Company Name</label>
+                                                                <input type="text" class="form-control" id="comname1" placeholder="Company Name">
+                                                              </div>
+                                                         <div class="form-group">
+                                                            <label for="comadd1">Company Address</label>
+                                                            <input type="text" class="form-control" id="comadd1" placeholder="Company Address">
+                                                          </div>
+                                                          <div class="form-row">
+                                                            <div class="form-group col-md-7">
+                                                              <label for="city1">City</label>
+                                                              <input type="text" class="form-control" id="city1"placeholder="City">
+                                                            </div>
+                                                            <div class="form-group col-md-5">
+                                                              <label for="country1">Country</label>
+                                                              <!--
+                                                              <select id="inputState" class="form-control">
+                                                                <option selected>Choose...</option>
+                                                                <option>...</option>
+                                                              </select>
+                                                            -->
+                                                          
+                                                              <input type="text" class="form-control" id="country1"placeholder="Country">
+
+                                                            </div>
+                                                           
+                                                          </div>
+                                                  
+                                            </div>
+                                          </div>
+                              </div>
+                              <div class="col-md-12 col-xs-12 col-sm-12 col-lg-6">
+                                    <div class="card">
+                                            <div class="card-header">
+                                              Cosignee
+                                            </div>
+                                            <div class="card-body">
+                                          
+                                            
+                                                     <div class="form-group">
+                                                            <label for="cpname2">Name</label>
+                                                            <input type="text" class="form-control" id="cpname2" placeholder="Name">
+                                                          </div>
+                                                          <div class="form-group">
+                                                                <label for="cpnum2">Contact Number</label>
+                                                                <input type="text" class="form-control" id="cpnum2" placeholder="Contact Number">
+                                                              </div>
+
+                                                              <div class="form-group">
+                                                                  <label for="comname2">Company Name</label>
+                                                                  <input type="text" class="form-control" id="comname2" placeholder="Company Address">
+                                                                </div>
+                                                         <div class="form-group">
+                                                            <label for="comadd2">Company Address</label>
+                                                            <input type="text" class="form-control" id="comadd2" placeholder="Company Address">
+                                                          </div>
+                                                          <div class="form-row">
+                                                            <div class="form-group col-md-7">
+                                                              <label for="city2">City</label>
+                                                              <input type="text" class="form-control" id="city2" placeholder="City">
+                                                            </div>
+                                                            <div class="form-group col-md-5">
+                                                              <label for="country2">Country</label>
+                                                              <!--
+                                                              <select id="inputState" class="form-control">
+                                                                <option selected>Choose...</option>
+                                                                <option>...</option>
+                                                              </select>
+                                                            -->
+                                                          
+                                                              <input type="text" class="form-control" id="country2"placeholder="Country">
+
+                                                            </div>
+                                                           
+                                                          </div>
+                                                
+                                            </div>
+                                            
+                                          </div>
+
+                                          
+                              </div>
+                             
+                         </div>
+
+
+
+
+
+
+                         <div class="row">
+                            <div class="col-12">
+                                  <div class="card">
+                                         
+                                          <div class="card-body">
+                                              <button class="btn btn-large" type="submit">Submit form</button>
+                                         </div>
+                                        </div>
+                            </div>
+                            
+                           
+                       </div>
+                        </form>   
+           </div>
+          
+           
+
+           
+        
+    
+</div>
+
+
+
+
+
+                  
+
+        
+    </body>
+</html>

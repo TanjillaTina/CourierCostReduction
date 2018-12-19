@@ -1,0 +1,158 @@
+.divStyle{
+    padding-top: 40px;
+  }
+  
+  .body{
+    padding-top: 60px;
+    font-family: arial;
+    margin: 0;
+    
+background-color: #263238;
+  }
+
+  .pbody{
+    background-color: #263238;    
+  }
+
+  .container{
+    background-color: #263238;
+  }
+
+  #Search{
+      padding-top: 60px;
+      background-color: white;
+  }
+  
+  .myjum{
+      background-color: #FBFCFC  ;
+  }
+  .mybtn{
+      padding-top: 5px;
+      padding-left: 5px;
+      padding-right: 5px;
+      padding-bottom: 5px;
+       }
+    
+  
+       .MyHeader{
+  
+   margin-top: 22px;
+   margin-left: 9px;
+       }
+  
+       .customDiv{
+  
+  min-height: 300px;
+  background-color: silver;
+  text-align: center;
+  font-size: large;
+   border: 2px solid silver;
+   border-radius: 5px;
+  }
+ 
+    
+  
+  .showingmenu{
+  
+      width: 700px !important;
+  
+  
+  }
+  .card-header{
+    background-color: #37474f ;
+    color: #ffff00;
+    text-align: center;
+  }
+  
+  .inbs{
+    background-color: #D5F5E3;
+  }
+
+
+
+  
+
+
+  table{
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    
+  }
+  th, td {
+    text-align: center;
+    
+    padding: 8px;
+  }
+  
+  tr:nth-child(odd){
+    color: #fff;
+      background-color: #2d333a;
+      font: bolder;
+   
+   
+  }
+  tr:nth-child(even){
+    color: #fff;
+    background-color: #455a64;
+  
+  }
+ 
+  th {
+    font-weight: bolder;
+    font-size: 18px;
+  
+    line-height: 1.4;
+   
+  
+    color: #fff!important;
+    background-color: #212121 !important;
+  }
+  
+.pt2{
+  color: #fff;
+  background-color: #2d333a;
+  font: bolder;
+
+}
+
+
+  .btnlarge{
+    width: 100%;
+    background-color:#31ABED;
+  
+}
+
+
+
+.card-header{
+  background-color:#37474f;
+
+}
+.btn-link{
+    color: white;
+    text-decoration: none;
+}
+
+.btn-link:hover { 
+    color: #ffff00;
+    text-decoration: none;
+}
+
+.header {
+   
+
+    padding-top: 30px;
+    font-weight: bold;
+    text-decoration: underline;
+    color: #ffff00;
+  }
+.prefix{
+  color: #fff;
+}
+
+.nav-item{
+  color: #ffff00;
+  -webkit-text-fill-color: #ffff00;
+}
+  

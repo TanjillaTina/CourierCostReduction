@@ -1,0 +1,69 @@
+.divStyle{
+    padding-top: 40px;
+  }
+  
+  body{
+    padding-top: 1660px;
+    color: white;
+  }
+  
+  
+  body.backimmg{
+      
+      background-size: cover;
+      margin: 0px;
+      padding: 0px;
+      color: white;
+       }
+  
+  #Education{
+      
+      color: black;
+  }
+  .h2{
+      color: black;
+  }
+  
+  .kk{
+      /*background: linear-gradient(#EAFAF1,#D0D3D4);*/
+      background-image: url(img/c1.jpg);
+  }
+  #Home{
+      padding-top: 60px;
+      background-image: url(c1.jpg);
+  }
+  #PerInfo{
+      color: black;
+      font-weight: bolder;
+  }
+  .bod{
+      border-width: 3px;
+      border-color: #797D7F;
+      color: solid black;
+      background-color:white;
+      font-weight: 2px;
+      font-weight: bolder;
+      font-size: 18px;
+  }
+  
+  .jumbotron{
+      
+      color:black;
+      text-align: center;
+  }
+  
+  
+  
+  th, td {
+      text-align: center;
+      padding: 8px;
+  }
+  
+  tr:nth-child(odd){background-color: #f2f2f2}
+  tr:nth-child(even){background-color: silver}
+  th {
+      background-color: silver;
+      color: black;
+  }
+  
+  
