@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Courier Cost Reduction</title>
+     
+   <link href="/css/indexr.css" rel="stylesheet">
+
+
+   <!--Materialize starts here-->
+
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css"  media="screen,projection"/>
+      
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+<!--Materialize ends here-->
+
+
+      <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="/materialize/jque.min.js"></script>
+      <script type="text/javascript" src="/materialize/js/materialize.min.js"></script>
+      
+
+    <!-- Import for Chart Starts Here-->
+ 
+		<!-- Load c3.css -->
+		<link href="/charts/stylesheets/c3.css" rel="stylesheet" type="text/css">
+	
+
+    <script src="/charts/javascripts/d3.v3.min.js" charset="utf-8"></script>
+    
+  	<!--  <script src="https://d3js.org/d3.v5.min.js"></script>  -->
+		<script src="/charts/javascripts/c3.min.js"></script>
+<!-- Load papaparse.js -->
+<script src="/charts/javascripts/papaparse.min.js"></script>
+	
+   <!--Imports for chart ends here-->
+
+   
+    </head>
+    <body>
+  
+
+<div class="row">
+        <div class="col s0 m4 l3"></div>
+        <div class="col s12 m4 l6">
+                        <div class="header">
+                
+                            <h3 class="text-header">Courier Cost Reduction</h3>
+
+                            <div class="progress">
+                                    <div class="indeterminate"></div>
+                                </div>
+                          </div>
+                          <h4 class="text-header">Showing Data of Year: <%= year %></h4>
+
+                          <div class="fixed-action-btn vertical click-to-toggle">
+                                <a class="btn-floating btn-large yellow darken-1">
+                                  <i class="material-icons">menu</i>
+                                </a>
+                                <ul>
+                                  <li><a class="btn-floating yellow" href="/"><i class="material-icons">insert_chart</i></a></li>
+                                  <li><a class="btn-floating green" href="/"><i class="material-icons">format_quote</i></a></li>
+                                  <li><a class="btn-floating red" id="download" download="myImage.jpg" href="" onclick="download_img(this);"><i class="material-icons">move_to_inbox</i></a></li>
+                                  <li><a class="btn-floating blue" href="/"><i class="material-icons">reply_all</i></a></li>
+                                </ul>
+                              </div>
+        </div>
+        <div class="col s0 m4 l3"></div>
+</div>
+
+
+                  <div class="row">
+                    <div class="col s2"></div>
+                        <div class="col s8">
+                        
+                              <div id="chart" style="height:550px; background-color: white;"></div>
+                          
+
+                                  
+    <script>
+
+var names='<%=names%>';
+nara=new Array();
+var t="";
+   for(var i=0;i<names.length;i++){
+       if(names[i]!='|')
+       {t+=names[i];}
+       else{
+         nara.push(t);
+         t="";
+       }
+     
+     }
+    
+     var datap='<%=datai%>';
+     var aram=new Array(); //outer array
+     var ara=new Array();  //inner array
+     var st="";
+     var k=0;
+     for(var i=0;i<datap.length;i++){
+       if(datap[i]!=',')
+       {st+=datap[i];}
+       else{
+         ara.push(st);
+         k++;
+         st="";
+       }
+       if(k==13){
+         aram.push(ara);
+         ara=new Array();
+         k=0;
+       }
+     }
+
+      aram.push(ara);
+      for(var g=0;g<nara.length;g++){
+        aram[g][0]=nara[g];
+      }
+   
+   
+        var chart = c3.generate({
+            bindto: '#chart',
+            axis: {
+        x: {
+            type: 'category',
+            categories: ['Jan', 'Feb','Mar', 'Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+        
+        }
+      },
+            data: {
+              columns:aram
+            
+            }
+        });
+        
+      
+      </script>
+                     </div>
+                           
+                         
+                        <div class="col s2"></div>
+                      </div>
+
+
+<hr>
+
+    </body>
+</html>

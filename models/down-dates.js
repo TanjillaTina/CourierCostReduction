@@ -3,7 +3,7 @@ const Schema=mongoose.Schema;
 
 
 let countriesSchema=new Schema({
-    countryname:{type: String,required:false},
+    countryname:{type:String,required:false},
 
 });
 

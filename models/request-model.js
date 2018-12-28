@@ -1,6 +1,7 @@
 const mongoose=require('mongoose');
 const Schema=mongoose.Schema;
-
+var myDate = new Date();
+//var myDateInitUsingISODateWrapper = ISODate();
 
 
 let conigneeSchema=new Schema({
@@ -37,8 +38,10 @@ let userDetailSchema=new Schema({
    //user info
    userId:{ type: String ,required:true},
    usermail:{type:String,required:true},
+   username:{type:String,required:true},
    //request date
-   reqDate:{ type: String ,required:true},
+   reqmonth:{type:String,required:false},
+   reqyear:{type:String,required:false},
 
 });
 
@@ -83,6 +86,8 @@ let requestSchema=new Schema({
     receivedmonth:{type:String,required:false},
     receivedyear:{type:String,required:false},
     boxDetail:[boxDetailSchema],
+ 
+  
     ///////////////inner boundaries for on processing queue
     // estemWeight:{type: String,required:false},
     // boxSize:{type: String,required:false},

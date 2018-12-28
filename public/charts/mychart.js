@@ -62,3 +62,6 @@ let lineChart = new Chart(CHART, {
     },
     
 });
+
+
+  

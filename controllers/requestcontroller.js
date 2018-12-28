@@ -112,38 +112,8 @@ datao=datao+" Contact Person "+'\t'+" Contact Person Number "+'\t'+" Company Nam
                   currentDown.couns.push({
                     countryname:ConnName
                   });
-                  currentDown.save(); 
-                }
-                else{
-                    //if nt, create new user in db
-                    console.log("Failed to Find Dwnload Collection");
-                    let newdown=new Down({
-                      downdate:da 
-                    });
-                
-                    newdown.save().then((resultd)=>{
-                        console.log("New Download Data is Saved "+ resultd);
-                
-                      resultd.couns.push({
-                        countryname:ConnName
-                      });
-                      resultd.save();
-                      
-                    }).catch((err)=>{
-                     // throw err;
-                     console.log("Download date is saved but, failed to save country name"+err);
-                    });
-                      
-
-                  }
-                });
-    /////////////////////////////////////////////////////////////////////////////
-
-
-
-    /////////////////////////////////////////////////////////////////////////////////////////////
-
-    
+                  currentDown.save().then(()=>{
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////          
       Request.find({'downloadex':false,'shiperOrshippingTo.country1':ConnName}).then(function(results){
 
 
@@ -184,7 +154,7 @@ datao=datao+" Contact Person "+'\t'+" Contact Person Number "+'\t'+" Company Nam
 
     ////preparing the excell sheet
     var data=datai+datao;
-    console.log("Printing Excell Infos"+data);
+  //  console.log("Printing Excell Infos"+data);
 
 
 
@@ -223,6 +193,114 @@ fs.writeFile(filename, data, (err) => {
  });
 
        });
+                  }); 
+                }
+                else{
+                    //if nt, create new user in db
+                    console.log("Failed to Find Dwnload Collection");
+                    let newdown=new Down({
+                      downdate:da 
+                    });
+                
+                    newdown.save().then((resultd)=>{
+                      //  console.log("New Download Data is Saved "+ resultd);
+                
+                      resultd.couns.push({
+                        countryname:ConnName
+                      });
+                      resultd.save().then(()=>{
+                          
+      Request.find({'downloadex':false,'shiperOrshippingTo.country1':ConnName}).then(function(results){
+
+
+
+        for(k=0;k<results.length;k++){
+
+      
+          if(results[k].reqtype=='INBOUND'){
+      
+            datai=datai+results[k].shiperOrshippingTo[0].cpname1+'\t'+results[k].shiperOrshippingTo[0].cpnum1+'\t'+results[k].shiperOrshippingTo[0].comname1+'\t'+results[k].shiperOrshippingTo[0].comadd1+'\t'+results[k].shiperOrshippingTo[0].city1+'\t'+results[k].shiperOrshippingTo[0].country1+'\t'+
+              "  "+'\t'+"  "+'\t'+" "+'\t'+
+              results[k].conignee[0].cpname2+'\t'+results[k].conignee[0].cpnum2+'\t'+results[k].conignee[0].comname2+'\t'+results[k].conignee[0].comadd2+'\t'+results[k].conignee[0].city2+'\t'+results[k].conignee[0].country2+'\n';
+          }
+  
+          if(results[k].reqtype=='OUTBOUND'){
+      
+            datao=datao+results[k].shiperOrshippingTo[0].cpname1+'\t'+results[k].shiperOrshippingTo[0].cpnum1+'\t'+results[k].shiperOrshippingTo[0].comname1+'\t'+results[k].shiperOrshippingTo[0].comadd1+'\t'+results[k].shiperOrshippingTo[0].city1+'\t'+results[k].shiperOrshippingTo[0].country1+'\t'+
+              "  "+'\t'+"  "+'\t'+" "+'\t'+
+              results[k].conignee[0].cpname2+'\t'+results[k].conignee[0].cpnum2+'\t'+results[k].conignee[0].comname2+'\t'+results[k].conignee[0].comadd2+'\t'+results[k].conignee[0].city2+'\t'+results[k].conignee[0].country2+'\n';
+          }
+  
+  
+      }
+
+
+//updating Documents
+
+      for(l=0;l<results.length;l++){
+
+        Request.updateOne({_id:results[l]._id},{downloadex:true,downloaddate:da}).then(function(resultss){
+        
+      
+         console.log("Updating "+l+resultss);
+       });
+        
+      }
+
+
+    ////preparing the excell sheet
+    var data=datai+datao;
+  //  console.log("Printing Excell Infos"+data);
+
+
+
+  var filename=ConnName+'.xls';
+fs.writeFile(filename, data, (err) => {
+    if (err) throw err;
+    //console.log('File created');
+        ////preparing the excell sheet
+       else{
+         
+  //////////downloading the excell file
+  
+    var fileLocation = path.join('./',filename);
+    console.log(fileLocation);
+    res.download(fileLocation, filename,err=>{
+      if(!err){  
+        fs.access(fileLocation, error => {
+  if (!error) {
+      fs.unlink(fileLocation,function(error){
+          console.log(error);
+      });
+  } else { console.log(error);}
+});
+      }
+      else{ }
+    });
+     
+
+         
+       }
+ });
+
+       });
+                      });
+                      
+                    }).catch((err)=>{
+                     // throw err;
+                     console.log("Download date is saved but, failed to save country name"+err);
+                    });
+                      
+
+                  }
+                });
+    /////////////////////////////////////////////////////////////////////////////
+
+
+
+    /////////////////////////////////////////////////////////////////////////////////////////////
+
+  
 
 
      };
@@ -300,7 +378,7 @@ fs.writeFile(filename, data, (err) => {
       
           ////preparing the excell sheet
           var data=datai+datao;
-          console.log("Printing Excell Infos"+data);
+      //    console.log("Printing Excell Infos"+data);
       
       
       
@@ -360,7 +438,7 @@ var SetCourrierName=(req,res)=>{
   Request.find({ shiperOrshippingTo:{ $size: 1 },
     conignee: { $size: 1 } , 'downloadex':true,'requestqueue':false
      }).then(function(results){
-       requests=results;
+      var requests=results;
      //console.log(results);
     
 
@@ -394,7 +472,20 @@ var InsertCourrierName=(req,res)=>{
                   currentDown.couns.pop({
                     countryname:counName
                   });
-                  currentDown.save(); 
+                  currentDown.save().then(()=>{  ///if countryname is popped
+                    Request.find({'downloadex':true,'shiperOrshippingTo.country1':counName,'downloaddate':downdate,'requestqueue':false}).then(function(results){
+
+                      //updating Documents
+                      
+                            for(l=0;l<results.length;l++){
+                              Request.updateOne({_id:results[l]._id},{requestqueue:true,courriercomname:ccname}).then(function(resultss){
+                              console.log("Updating "+l+resultss);
+                             }); 
+                            }
+                           });
+
+                           res.redirect('/requests/SetCourrierName');
+                  }); 
                 }
                 else{
                     //if nt, create new user in db
@@ -409,29 +500,9 @@ var InsertCourrierName=(req,res)=>{
     /////////////////////////////////////////////////////////////////////////////////////////////
 
     
-      Request.find({'downloadex':true,'shiperOrshippingTo.country1':counName,'downloaddate':downdate,'requestqueue':false}).then(function(results){
-
-
-
-
-//updating Documents
-
-      for(l=0;l<results.length;l++){
-
-        Request.updateOne({_id:results[l]._id},{requestqueue:true,courriercomname:ccname}).then(function(resultss){
-        
       
-         console.log("Updating "+l+resultss);
-       });
-        
-      }
 
 
- 
-
-       });
-
-res.redirect('/requests/SetCourrierName');
 
 };
 module.exports={

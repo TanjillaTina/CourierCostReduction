@@ -58,13 +58,13 @@ var confirmPage= (req, res)=> {
     var idi=req.body.idi;
     
 
-    Request.updateOne({_id:idi},{
+    Request.updateOne({_id:req.body.idi},{
       finaldone:true,
       received:true,
-      cost:costi,
-      receiveddate:t,
-      receivedmonth:m,
-      receivedyear:y
+      cost:req.body.costi,
+      receiveddate:d.getDate(),
+      receivedmonth:d.getMonth()+1,
+      receivedyear:d.getFullYear()
     }).then(function(resultss){
         
       
@@ -94,17 +94,17 @@ var confirmPage= (req, res)=> {
     var ido=req.body.ido;
 
 var boxsdetail={
-  weight:weight,
-   boxSize:boxsize
+  weight:req.body.weight,
+   boxSize:req.body.boxsize
 };
     
-    Request.updateOne({_id:ido},{
+    Request.updateOne({_id:req.body.ido},{
       finaldone:true,
       received:true,
       cost:costo,
-      receiveddate:t,
-      receivedmonth:m,
-      receivedyear:y,
+      receiveddate:d.getDate(),
+      receivedmonth:d.getMonth()+1,
+      receivedyear:d.getFullYear(),
       boxDetail:boxsdetail
       
     }).then(function(results){
@@ -112,7 +112,7 @@ var boxsdetail={
       res.redirect('/confirms');
     });
 
-    res.redirect('/confirms');
+  
 
   };
 

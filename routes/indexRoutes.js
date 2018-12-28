@@ -4,7 +4,7 @@ const indexController=require('../controllers/index');
 /* GET home page. */
 router.get('/',indexController.indexPage);
 router.post('/viewChart',indexController.viewChart);
-
+router.post('/viewChart2',indexController.viewChart2);
 /* GET users listing. */
 
 

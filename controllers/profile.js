@@ -46,17 +46,18 @@ res.render('profile',{user:user,//reqstat:RequestStatus,//
         var t=d.getDate();
         var m=d.getMonth()+1;
         var y=d.getFullYear();
-        var da=t+"/"+m+"/"+y;
+        //var da=t+"/"+m+"/"+y;
         
 
             let request=new Request({
               reqtype:req.body.reqType,
               comname:user.comname,
+             // username:user.username,
                
             });
 
             request.save().then((result)=>{
-                console.log(result);
+                console.log("Saved Result -> "+result);
 
               result.shiperOrshippingTo.push({
                 cpname1:req.body.comname1,
@@ -88,13 +89,22 @@ res.render('profile',{user:user,//reqstat:RequestStatus,//
                 userId:user._id,
                 usermail:user.email,
                 //request date
-                reqDate:da
+                username:user.username,
+                reqmonth:m,
+                reqyear:y
               });
 
 
-              result.save();
-              req.flash('insert_msg', 'Your Form Is Submitted Successfully!!');
-              res.redirect('/profile');
+              result.save().then(function(){
+                req.flash('insert_msg', 'Your Form Is Submitted Successfully!!');
+                console.log("Saved Successfully....");
+                res.redirect('/profile');
+              }).catch((err)=>{
+                console.log(err);
+                req.flash('cant_insert_msg', 'Sorry!! Failed to submit form!! Try Again!!');
+                res.redirect('/profile');  
+              });
+              
             }).catch((err)=>{
               console.log(err);
               req.flash('cant_insert_msg', 'Sorry!! Failed to submit form!! Try Again!!');
