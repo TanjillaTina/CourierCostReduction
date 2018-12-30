@@ -18,12 +18,7 @@ var indexPage= (req, res)=> {
 
   var viewChart=(req,res)=>{
 
-    var datai= [
-      ["data1", 100, 30, 200, 150, 100, 30, 200, 150, 100, 30, 200, 150],
-      ["data2", 10, 130, 20, 10, 30, 300, 230, 100, 110, 80, 20, 10],
-      ["data3", 45, 50, 23, 45, 45, 50, 23, 45, 45, 50, 33, 45,'']
-    ];
-
+  
     var yearr=req.body.selectyear;
     if(!yearr){
       req.flash('error_msg', 'You must select a year to view that page');
@@ -136,22 +131,33 @@ Request.aggregate([
 
   ]).then((result)=>{
   let reqs=result;
+/////////////////////////////
 
+  for(var k=0;k<reqs.length;k++){
+    console.log("User Mail "+reqs[k]._id.usermail+" User Name "+reqs[k]._id.username+"Total Requests "+reqs[k].totalAmount+" Request Year "+reqs[k]._id.reqyear+" Request Month "+reqs[k]._id.reqmonth);
+  }
+
+  var namesara="";
+/////////////////////////////
 for(var com=0;com<results.length;com++){
   for(var k=0;k<reqs.length;k++){
     if(finalArray[com][0]==reqs[k]._id.usermail){
       var mo=reqs[k]._id.reqmonth;
       finalArray[com][parseInt(mo)]=reqs[k].totalAmount;
+      //namesara+=((reqs[k]._id.username)+'|');
     }
   }
 }
-var namesara="";
-for(var k=0;k<reqs.length;k++){
-
-  namesara+=((reqs[k]._id.username)+'|');
-  
-}
-
+/////////////
+// for(var com=0;com<results.length;com++){
+//   for(var k=0;k<reqs.length;k++){
+//     if(finalArray[0][com]==reqs[k]._id.usermail){
+//       namesara+=((reqs[k]._id.username)+'|');
+//     }
+//   }
+// }
+console.log("pRINTING fINAL aRRAY "+JSON.stringify(finalArray));
+console.log("pRITING nAMES "+namesara);
   res.render('indexchart2',{year:yearr,datai:finalArray,names:namesara});
             
 }).catch((err)=>{

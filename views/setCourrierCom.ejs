@@ -100,9 +100,9 @@
               </div>
 
 
-    <% downsdate.forEach(function(downsdate){ %>
+    <% couns.forEach(function(couns){ %>
        
-      <% downsdate.couns.forEach(function(couns){ %>
+
         
                
 
@@ -112,10 +112,10 @@
                  
                 <div class="row">
                   <h5 class="text-header col s6" style="padding-top:5px;">
-                    Country Name :<%= couns.countryname %>
+                    Country Name :<%= couns._id.country %>
                   </h5>
                   <h5 class="text-header col s6" style="padding-top:5px;">
-                      Download Date: <%=downsdate.downdate%>
+                      Download Date: <%= couns._id.downloaddate %>
                     </h5>
 
                     
@@ -125,8 +125,9 @@
                                  
                                          <form class="col s12" action="/requests/InsertCourrierName" method="POST">
                                                  <div class="row">
-                                                        <input type="hidden"  name="CounNamee" value=<%=couns.countryname %> >
-                                                        <input type="hidden"  name="downdatee" value=<%=downsdate.downdate %> >
+                                                        <input type="hidden"  name="CounNamee" value= '<%= couns._id.country %>' >
+                                                        <input type="hidden"  name="downdatee" value= '<%= couns._id.downloaddate %>' >
+                                                       
                                                    <div class="input-field col s6">
      
                                                      
@@ -176,7 +177,7 @@
                         <ul class="collapsible" data-collapsible="accordion">
                             <% requests.forEach(function(requests){ %>
 
-                              <% if (requests.shiperOrshippingTo[0].country1==couns.countryname && requests.downloaddate==downsdate.downdate) { %>
+                              <% if (requests.shiperOrshippingTo[0].country1==couns._id.country && requests.downloaddate==couns._id.downloaddate) { %>
                            
 
                             <li>
@@ -294,8 +295,8 @@
             <div class="card-action">
 
                 <form action="/requests/DownloadExcell2" method="POST">
-                  <input type="hidden"  name="CounName" value=<%=couns.countryname %> >
-                  <input type="hidden"  name="downdate" value=<%=downsdate.downdate %> >
+                  <input type="hidden"  name="CounName" value='<%=couns._id.country %>' >
+                  <input type="hidden"  name="downdate" value='<%=couns._id.downloaddate %>' >
                                
                               
 
@@ -314,7 +315,7 @@
 
           </div>
 
-          <% }); %>
+        
     <% }); %>
 
 
