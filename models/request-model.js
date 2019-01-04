@@ -86,18 +86,6 @@ let requestSchema=new Schema({
     receivedmonth:{type:String,required:false},
     receivedyear:{type:String,required:false},
     boxDetail:[boxDetailSchema],
- 
-  
-    ///////////////inner boundaries for on processing queue
-    // estemWeight:{type: String,required:false},
-    // boxSize:{type: String,required:false},
-    // cost:{type: String,required:false},
-    // onprocessingQueue:{ type: Boolean ,default:false},
-
-    ////
-
-    
-    
 
 });
 

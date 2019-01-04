@@ -165,8 +165,17 @@
                                                                 <label><h5> Select Year</h5></label>
                                                                 <select class="browser-default" name="selectyear">
                                                                   <option value="" disabled selected>Choose your option</option>
-                                                                  <option value="2018"> 2018 </option>
-                                                               
+                                                                  <% if (receivedyear.length==0) { %>
+                                                                    <option value="0"> null </option>
+                                                                  <% } %>
+                                                                  <% if (receivedyear.length>0) { %>
+
+                                                                    <% receivedyear.forEach(function(receivedyear){ %>
+                                                                        <option value='<%=receivedyear%>'> <%=receivedyear%> </option>
+                                                                      <% }); %>
+
+                                                                  <% } %>
+                                    
                                                                 </select>
                                                                     
                                                          
@@ -208,10 +217,19 @@
                                                           
                                                                 <label><h5> Select Year</h5></label>
                                                                 <select class="browser-default" name="selectyear2">
-                                                                  <option value="" disabled selected>Choose your option</option>
-                                                                  <option value="2018"> 2018 </option>
-                                                               
-                                                                </select>
+                                                                    <option value="" disabled selected>Choose your option</option>
+                                                                    <% if (reqyear=="") { %>
+                                                                      <option value="0"> null </option>
+                                                                    <% } %>
+                                                                    <% if (reqyear!=="") { %>
+  
+                                                                      <% reqyear.forEach(function(reqyear){ %>
+                                                                          <option value='<%=reqyear%>'> <%=reqyear%> </option>
+                                                                        <% }); %>
+  
+                                                                    <% } %>
+                                      
+                                                                  </select>
                                                                     
                                                          
                                                           </div>
@@ -229,6 +247,41 @@
                                                  
   
                                       </div>
+                                  </div>
+                                </li>
+
+
+
+
+                                <li>
+                                    <div class="collapsible-header blue-grey darken-3" style="color:white;padding-left: 200px;"> 
+                                
+                                        <h5> Flat Rate Suggestion </h5>
+                                         
+                                    </div>
+                                  <div class="collapsible-body  blue-grey darken-3 darken-3-text">
+  
+  
+                                    <div class="row">
+                                      <div class="col s12 m12">
+                                          <div class="card-content">
+                                          
+                                                  
+                                              <div class="row">
+                                                 
+                                                  <a href="/flatrate" class="waves-effect waves-light btn-large btnlarge">
+                                                    <h5>
+                                                        <i class=" large material-icons">search</i>
+                                                        
+                                                   View </h5>
+                                                  </a>
+                                              </div>
+                                              
+              
+                                           
+                                              
+                                          </div>
+                                       </div>
                                   </div>
                                 </li>
                             </ul>
