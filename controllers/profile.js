@@ -46,7 +46,7 @@ res.render('profile',{user:user,//reqstat:RequestStatus,//
         var t=d.getDate();
         var m=d.getMonth()+1;
         var y=d.getFullYear();
-        //var da=t+"/"+m+"/"+y;
+        var da=t+"/"+m+"/"+y;
         
 
             let request=new Request({
@@ -91,7 +91,8 @@ res.render('profile',{user:user,//reqstat:RequestStatus,//
                 //request date
                 username:user.username,
                 reqmonth:m,
-                reqyear:y
+                reqyear:y,
+                reqDate:da
               });
 
 

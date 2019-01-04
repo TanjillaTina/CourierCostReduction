@@ -42,6 +42,7 @@ let userDetailSchema=new Schema({
    //request date
    reqmonth:{type:String,required:false},
    reqyear:{type:String,required:false},
+   reqDate:{type:String,required:false}
 
 });
 
