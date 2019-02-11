@@ -199,9 +199,9 @@
 
 
                                 <li>
-                                    <div class="collapsible-header blue-grey darken-3" style="color:white;padding-left: 180px;"> 
+                                    <div class="collapsible-header blue-grey darken-3" style="color:white;padding-left: 150px;"> 
                                 
-                                        <h5> View Chart for Persons</h5>
+                                        <h5> View Chart for Request Per Person</h5>
                                          
                                     </div>
                                   <div class="collapsible-body  blue-grey darken-3 darken-3-text">
@@ -249,6 +249,82 @@
                                       </div>
                                   </div>
                                 </li>
+
+
+
+
+
+
+
+
+                                <li>
+                                    <div class="collapsible-header blue-grey darken-3" style="color:white;padding-left: 150px;"> 
+                                
+                                        <h5> View Chart for Cost Per Person</h5>
+                                         
+                                    </div>
+                                  <div class="collapsible-body  blue-grey darken-3 darken-3-text">
+  
+  
+                                      <div class="card-content">
+                                          
+                                       
+                                                  <div class="row teal-text  blue-grey darken-3">
+                                                    <div class="col s2"></div>
+                                                      <form  method="POST" action="/costPerPersonChart" class="col s8">
+                                                        <div class="row">
+                                                          
+                                                                <label><h5> Select Year</h5></label>
+                                                                <select class="browser-default" name="selectyear3">
+                                                                    <option value="" disabled selected>Choose your option</option>
+                                                                    <% if (reqyear=="") { %>
+                                                                      <option value="0"> null </option>
+                                                                    <% } %>
+                                                                    <% if (reqyear!=="") { %>
+  
+                                                                      <% reqyear.forEach(function(reqyear){ %>
+                                                                          <option value='<%=reqyear%>'> <%=reqyear%> </option>
+                                                                        <% }); %>
+  
+                                                                    <% } %>
+                                      
+                                                                  </select>
+                                                                    
+                                                         
+                                                          </div>
+                                                   
+                      
+                                                          
+                                                          <button class="btn waves-effect waves-light btn-large" type="submit"> View Chart
+                                                            <i class="material-icons right">search</i>
+                                                          </button>  
+                                                      </form>
+                                                      <div class="col s2"></div>
+                                                    </div>
+                                              
+                                           
+                                                 
+  
+                                      </div>
+                                  </div>
+                                </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

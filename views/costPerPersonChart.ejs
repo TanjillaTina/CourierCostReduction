@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Courier Cost Reduction</title>
+     
+   <link href="/css/indexr.css" rel="stylesheet">
+
+
+   <!--Materialize starts here-->
+
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css"  media="screen,projection"/>
+      
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+<!--Materialize ends here-->
+
+
+      <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="/materialize/jque.min.js"></script>
+      <script type="text/javascript" src="/materialize/js/materialize.min.js"></script>
+      
+
+    <!-- Import for Chart Starts Here-->
+ 
+		<!-- Load c3.css -->
+		<link href="/charts/stylesheets/c3.css" rel="stylesheet" type="text/css">
+	
+
+    <script src="/charts/javascripts/d3.v3.min.js" charset="utf-8"></script>
+    
+  	<!--  <script src="https://d3js.org/d3.v5.min.js"></script>  -->
+		<script src="/charts/javascripts/c3.min.js"></script>
+<!-- Load papaparse.js -->
+<script src="/charts/javascripts/papaparse.min.js"></script>
+	
+   <!--Imports for chart ends here-->
+   <style>
+    .material-tooltip .backdrop{
+    background-color:#006064 ;
+  }
+  .txt-head{
+    text-align: center;
+    text-decoration: underline;
+  }
+     </style>
+   
+    </head>
+    <body>
+  
+
+      
+
+      <div class="container-fluid fixed-top " style="background-color: #2d333a;">
+           
+        <nav>
+            <div class="nav-wrapper blue-grey darken-3">
+              <a href="#!" class="brand-logo"style="padding-left:60px; color:white;"><i class="material-icons prefix"style="color:white;">all_inbox</i>Courier Cost Reduction</a>
+              <ul class="right hide-on-med-and-down">
+                
+                <li><a href="/"><i class="material-icons right">exit_to_app</i>Back</a></li>
+              </ul>
+
+              <ul class="side-nav" id="mobile-demo">
+          
+                  
+                  <li><a href="/"><i class="material-icons right">exit_to_app</i>Back</a></li>
+             
+            </ul>
+            </div>
+          </nav>
+    
+  
+       </div>
+              <!-- Fixed Top Menu div ends here -->
+              
+  
+<br>
+
+
+
+<div class="row">
+        
+                       
+                          <h4 class="text-header txt-head">Showing Total Cost Per Person Chart of Year: <%= year %></h4>
+                          
+
+                          <div class="fixed-action-btn vertical click-to-toggle">
+                                <a class="btn-floating btn-large yellow darken-1">
+                                  <i class="material-icons">menu</i>
+                                </a>
+                                <ul>
+                                  <li><a class="btn-floating green tooltipped modal-trigger" href="#mymodal" data-position="left" data-tooltip="Download Excell Sheet For Selected Month"><i class="material-icons">date_range</i></a></li>
+                                  
+                                  <li><a class="btn-floating red tooltipped" href="/dwnCurentMonthCost" data-position="left" data-tooltip="Download Excell Sheet For Current Month"><i class="material-icons">calendar_today</i></a></li>
+               
+                                  <li><a class="btn-floating blue tooltipped" href="/"  data-position="left" data-tooltip="Back to main page"><i class="material-icons">reply_all</i></a></li>
+                                </ul>
+                              </div>
+        </div>
+   
+
+
+ 
+                      <!-- Modal Structure -->
+                      <div id="mymodal" class="modal teal-text " style="background-color:white;">
+                          <div class="modal-content">
+  
+  
+                         
+                          
+                            <!--   Showing Details Starts Here-->
+                          <div class="row">
+  
+                            <div class="col s0 m12">
+                                
+                                          <h5>Select Month and Year To Download Excell Sheet</h5>
+                                   
+                                          <div class="row">
+                                              <form class="col s12" action="/dwnAnyMonthCost" method="POST">
+                                                <div class="row">
+                                                  <div class="input-field col s6">
+                                                
+                                                    <div class="row">
+                                                      <div class="input-field">
+                                                               <i class="material-icons prefix">today</i>
+                                                               <input id="icon_prefix" type="text" class="validate" list="datalist1" name="ryear">
+                                                               <label for="icon_prefix">Select Year</label>
+                                                               <datalist id="datalist1">
+                                                             
+                                                                             <% reqyear.forEach(function(reqyear) { %>
+                                                                               <option value="<%= reqyear %>" >
+                                                                               <% }); %>
+                                                               </datalist>
+                                                                     
+                                                     </div>
+                                                     </div>
+                                                  </div>
+                                                  <div class="input-field col s6">
+                                                    <div class="row">
+                                                      <div class="input-field">
+                                                               <i class="material-icons prefix">today</i>
+                                                               <input id="icon_prefix" type="text" class="validate" list="datalist2" name="rmonth">
+                                                               <label for="icon_prefix">Select Month</label>
+                                                               <datalist id="datalist2">
+                                                             
+                                                                             <% reqmonth.forEach(function(reqmonth) { %>
+                                                                               <option value="<%=reqmonth %>" >
+                                                                               <% }); %>
+                                                               </datalist>
+                                                                     
+                                                     </div>
+                                                     </div>
+                                                  </div>
+                                                </div>
+                                                <div class="input-field col s6">
+                                                  <button class="btn waves-effect waves-light" type="submit">Submit
+                                                      <i class="material-icons right">send</i>
+                                                    </button>
+                                                 
+                                              </div>
+
+                                              </form>
+                                            </div>
+                            </div>
+                            
+                            
+                            
+                               
+                            </div>
+  
+     
+                          </div>
+                            
+  
+                        </div>
+</div>
+
+
+                  <div class="row">
+                    <div class="col s1"></div>
+                        <div class="col s10">
+                        
+                              <div id="chart" style="height:550px; background-color: white;"></div>
+                          
+    </div>
+                           
+                         
+                        <div class="col s1"></div>
+                      </div>
+
+
+<hr>
+
+
+<script>
+    
+     var datap='<%=datai%>';
+     var aram=new Array(); //outer array
+     var ara=new Array();  //inner array
+     var st="";
+     var k=0;
+     for(var i=0;i<datap.length;i++){
+       if(datap[i]!=',')
+       {st+=datap[i];}
+       else{
+         ara.push(st);
+         k++;
+         st="";
+       }
+       if(k==13){
+         aram.push(ara);
+         ara=new Array();
+         k=0;
+       }
+     }
+  
+        var chart = c3.generate({
+            bindto: '#chart',
+            axis: {
+        x: {
+            type: 'category',
+            categories: ['Jan', 'Feb','Mar', 'Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+        
+        }
+      },
+            data: {
+              columns:aram
+            
+            }
+        });
+  ///////////////////////////////
+  $(document).ready(function(){
+    // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+    $('.modal').modal();
+  
+  });
+  
+  </script>
+
+    </body>
+</html>

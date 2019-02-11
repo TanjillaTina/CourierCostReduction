@@ -96,7 +96,7 @@
                                   <i class="material-icons">menu</i>
                                 </a>
                                 <ul>
-                                  <li><a class="btn-floating green tooltipped modal-trigger" href="#mymodal" data-position="left" data-tooltip="Download Excell Sheet For This Month"><i class="material-icons">date_range</i></a></li>
+                                  <li><a class="btn-floating green tooltipped modal-trigger" href="#mymodal" data-position="left" data-tooltip="Download Excell Sheet For Selected Month"><i class="material-icons">date_range</i></a></li>
                                   
                                   <li><a class="btn-floating red tooltipped" href="/dwnExem" data-position="left" data-tooltip="Download Excell Sheet For Current Month"><i class="material-icons">calendar_today</i></a></li>
                
@@ -200,18 +200,6 @@
 
 
 <script>
-  var names='<%=names%>';
-nara=new Array();
-var t="";
-   for(var i=0;i<names.length;i++){
-       if(names[i]!='|')
-       {t+=names[i];}
-       else{
-         nara.push(t);
-         t="";
-       }
-     
-     }
     
      var datap='<%=datai%>';
      var aram=new Array(); //outer array
@@ -232,7 +220,7 @@ var t="";
          k=0;
        }
      }
-
+console.log("array aram "+aram);
 
    
   
